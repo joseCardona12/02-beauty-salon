@@ -1,5 +1,7 @@
+import { LoginForm } from "@/ui/organisms";
+
 export default function LoginView(){
     return(
-        <div>Login</div>
+        <LoginForm />
     )
 }
