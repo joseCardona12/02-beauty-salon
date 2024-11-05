@@ -1,0 +1,28 @@
+body{
+    max-width: 1500px;
+    margin: 0 auto;
+    height: 100vh;
+    padding: var(--padding-small);
+}
+
+.content-dashboard{
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+    "sidebar main"
+    "sidebar footer";
+    gap: var(--padding-medium);
+    height: 100%;
+}
+
+
+.main {
+    grid-area: main;
+    background-color: brown;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: aqua;
+}
