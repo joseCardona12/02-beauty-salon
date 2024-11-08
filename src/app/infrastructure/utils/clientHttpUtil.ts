@@ -1,4 +1,7 @@
-const defaultBaseUrl = "https://vacantsbackendgates-production.up.railway.app/api/v1"
+import { IUser } from "@/app/core/application/interfaces";
+import { UtilApplication } from "@/app/core/application/utils";
+
+const defaultBaseUrl = "https://beautysalongates-production.up.railway.app/api/v1"
 
 export class HttpClient {
   private baseUrl : string;
@@ -6,13 +9,18 @@ export class HttpClient {
   constructor(baseUrl?: string) {
     this.baseUrl = baseUrl || defaultBaseUrl;
   }
+  getUserLogged():IUser{
+    return UtilApplication.getUserLogged();  
+  }
 
   private async getHeader() {
+    const userLogged = this.getUserLogged();
+    console.log("user logged", userLogged);
     return {
       "Content-Type": "application/json",
     }
   }
-
+  
   private async handleResponse(response: Response){
     if (!response.ok) {
       const errorData = await response.json();
@@ -47,6 +55,7 @@ export class HttpClient {
       method: "POST",
       body: JSON.stringify(body),
     })
+    console.log("response", response);
     return this.handleResponse(response);
   }
 

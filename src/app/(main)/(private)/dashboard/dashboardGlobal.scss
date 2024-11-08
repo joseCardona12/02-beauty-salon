@@ -1,3 +1,5 @@
+
+
 body{
     max-width: 1500px;
     margin: 0 auto;
@@ -19,10 +21,11 @@ body{
 
 .main {
     grid-area: main;
-    background-color: brown;
 }
 
 .footer {
     grid-area: footer;
-    background-color: aqua;
+    background-color: var(--background-color-white);
+    padding: var(--padding-small);
+    border-radius: var(--border-radius-small);
 }

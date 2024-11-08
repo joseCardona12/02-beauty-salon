@@ -1,0 +1,21 @@
+.list-item{
+    text-decoration: none;
+    color: var(--color-black);
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: var(--padding-small);
+    }
+
+    .list-item-logout{
+        background-color: var(--background-color-secondary);
+        border-radius: var(--border-radius-medium);
+        padding: var(--padding-small);
+        color: var(--color-white);
+    }
+
+    &:hover{
+        color: var(--color-secondary);
+    }
+}

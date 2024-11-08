@@ -1,23 +1,25 @@
 import Link from "next/link";
-import "./ItemNavStyles.scss";
+import "./itemNavStyles.scss";
 
 interface IItemNavProps{
     icon?:React.ReactElement,
     text:string,
-    href?:string
+    href?:string,
+    className?:string,
 }
 
 export default function ItemNav({
     icon,
     text,
-    href
+    href,
+    className,
 }: IItemNavProps){
     return(
-        <li>
-            <Link href={href || "#"}>
+        <Link href={href || "#"} className="list-item">
+            <li className={className}>
                 {icon}
                 {text}
-            </Link>
-        </li>
+            </li>
+        </Link>
     )
 }

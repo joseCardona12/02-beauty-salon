@@ -1,10 +1,13 @@
 
 "use client";
-import { FormField } from "@/ui/molecules";
+import { FormField, inputAlert } from "@/ui/molecules";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ILoginRequest } from "@/app/core/application/dto";
+import { signIn } from "next-auth/react";
+import { UtilApplication } from "@/app/core/application/utils";
+import { useRouter } from "next/navigation";
 
 
 const loginSchema = yup.object().shape({
@@ -20,6 +23,8 @@ const loginSchema = yup.object().shape({
 })
 
 export default function LoginForm():React.ReactNode {
+    const router = useRouter();
+
     const {
         control,
         handleSubmit,
@@ -31,8 +36,19 @@ export default function LoginForm():React.ReactNode {
         resolver: yupResolver(loginSchema)
     })
 
-    const handleLogin = (data: ILoginRequest):void =>{
-        console.log(data);
+    const handleLogin = async(data: ILoginRequest):Promise<void> =>{
+        const result = await signIn("credentials",{
+            redirect: false,
+            username: data.userName,
+            password: data.password
+        });
+        if(!result?.error){
+            const getName = UtilApplication.separateName(data.userName);
+            inputAlert(`Welcome ${getName}`, "success");
+            router.push("/dashboard");
+            return;
+        }
+        inputAlert(result.error, "error");
     }
     return (
         <form className="form" onSubmit={handleSubmit(handleLogin)}>
@@ -54,7 +70,7 @@ export default function LoginForm():React.ReactNode {
                 error={errors.password}
             />
             <button>
-                Iniciar sessión
+                Login
             </button>
         </form>
     )

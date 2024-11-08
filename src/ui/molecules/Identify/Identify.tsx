@@ -28,7 +28,7 @@ export default function Identify({
                 />
                 }
             </div>
-            <h2>{text}</h2>
+            <h2 className="identify-text">{text}</h2>
         </div>
     )
 }

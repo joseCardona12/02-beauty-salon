@@ -1,5 +1,7 @@
 import type { Metadata } from "next"; 
 import "./dashboardGlobal.scss";
+import { FooterDashboard, HeaderDashboard } from "@/ui/molecules";
+import Middleware from "./Middleware";
 
 export const metadata: Metadata = {
 title: "Create Next App",
@@ -14,7 +16,13 @@ export default function DashboardLayout({
     return (
       <html lang="en">
         <body className={``}>
-          {children}
+          <div className="content-dashboard">
+            <Middleware>
+              <HeaderDashboard />
+                {children}
+              <FooterDashboard />
+            </Middleware>
+          </div>
         </body>
       </html>
     );

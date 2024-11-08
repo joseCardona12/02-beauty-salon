@@ -1,0 +1,20 @@
+.navbar{
+    height: 75vh;
+
+
+    .navbar-list{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        padding-left: 0;
+        list-style: none;
+
+        .list{
+            display: flex;
+            flex-direction: column;
+            gap: var(--padding-small);
+        }
+
+    }
+}

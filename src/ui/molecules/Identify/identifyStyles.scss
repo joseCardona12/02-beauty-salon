@@ -1,0 +1,21 @@
+.content-identify{
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-small);
+
+    .identify{
+        background-color: var(--background-color-secondary);
+        padding: var(--padding-small);
+        border-radius: var(--border-radius-medium);
+        color: var(--color-white);
+        width: fit-content;  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .identify-text{
+        font-weight: 400;
+        font-size: 1rem;
+    }
+}

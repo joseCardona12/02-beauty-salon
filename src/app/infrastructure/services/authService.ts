@@ -11,9 +11,10 @@ export class AuthService implements PAuth{
     }
 
     async login(request:ILoginRequest):Promise<ILoginResponse>{
-        return this.clientHttp.post<ILoginResponse, ILoginRequest>(
+        const data = await this.clientHttp.post<ILoginResponse, ILoginRequest>(
             `${this.basePath}/login`,
-            request
-        )
+            request,
+        );
+        return data;
     }
 }
